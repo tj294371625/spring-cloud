@@ -1,9 +1,9 @@
 package com.chinadaas.controller;
 
+import com.chinadaas.entity.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +30,39 @@ public class ProductsController {
     @GetMapping("/product/findAll")
     public Map<String, Object> findAll() {
         log.info("查询所有商品成功, 服务端口: {}", port);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", 200);
+        result.put("msg", "服务调用成功, 服务所提供端口: " + port);
+
+        return result;
+    }
+
+    @GetMapping("/product/findById")
+    public Map<String, Object> findById(@RequestParam("id") String productId) {
+        log.info("查询成功, 服务端口为: {}, 商品Id为: {}", port, productId);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", 200);
+        result.put("msg", "服务调用成功, 服务所提供端口: " + port);
+
+        return result;
+    }
+
+    @PostMapping("/product/createProduct")
+    public Map<String, Object> createProduct(@RequestBody Product product) {
+        log.info("创建成功, 服务端口为: {}, 商品信息为: {}", port, product);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", 200);
+        result.put("msg", "服务调用成功, 服务所提供端口: " + port);
+
+        return result;
+    }
+
+    @PostMapping("/product/saveName")
+    public Map<String, Object> saveName(String productName) {
+        log.info("保存成功, 服务端口为: {}, 商品名称为: {}", port, productName);
 
         Map<String, Object> result = new HashMap<>();
         result.put("code", 200);

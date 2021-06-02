@@ -19,6 +19,11 @@
     </properties>
 
     <dependencies>
+        <!--引入openfeign依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <!--引入eureka client依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
