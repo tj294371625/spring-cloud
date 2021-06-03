@@ -29,6 +29,14 @@ public class ProductsController {
 
     @GetMapping("/product/findAll")
     public Map<String, Object> findAll() {
+
+        try {
+            // zs: openfeign调用，默认超时时间是1秒，我们让线程睡眠2秒，观察调用结果
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         log.info("查询所有商品成功, 服务端口: {}", port);
 
         Map<String, Object> result = new HashMap<>();
