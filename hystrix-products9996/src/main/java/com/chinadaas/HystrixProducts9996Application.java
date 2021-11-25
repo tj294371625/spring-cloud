@@ -3,6 +3,7 @@ package com.chinadaas;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class HystrixProducts9996Application {
 
