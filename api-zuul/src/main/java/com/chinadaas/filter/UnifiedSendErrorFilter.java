@@ -3,6 +3,7 @@ package com.chinadaas.filter;
 import com.alibaba.fastjson.JSON;
 import com.chinadaas.exception.AccessException;
 import com.netflix.zuul.context.RequestContext;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.netflix.zuul.filters.post.SendErrorFilter;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ import java.util.Map;
  * @createTime 2021.11.28
  */
 @Component
+@ConditionalOnProperty(name = "zuul.SendErrorFilter.error.disable", havingValue = "true", matchIfMissing = true)
 public class UnifiedSendErrorFilter extends SendErrorFilter {
 
     public static final String CODE = "code";
