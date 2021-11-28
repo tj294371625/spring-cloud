@@ -1,0 +1,36 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: api-zuul
+
+# zuul会为我们自动实现这样的配置，无须像下面这样显示配置
+zuul:
+  routes:
+    hystrix-products9996:
+      path: /hystrix-products9996/**
+      serviceId: hystrix-products9996
+  SendErrorFilter:
+    error:
+      disable: true
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka8761.com:8761/eureka,http://eureka8762.com:8762/eureka
+
+
+# 这里比较搞笑，仅配置hystrix超时，不配置ribbon超时，界面提示的错误是hystrix read timeout
+ribbon:
+  ReadTimeout: 10000
+  SocketTimeout: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
